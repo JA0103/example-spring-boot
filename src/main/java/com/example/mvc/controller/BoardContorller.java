@@ -1,4 +1,4 @@
-package com.example.mvc.service;
+package com.example.mvc.controller;
 
 import java.util.List;
 
@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.mvc.controller.BoardService;
 import com.example.mvc.domain.Board;
 import com.example.mvc.repository.BoardRepository;
+import com.example.mvc.service.BoardService;
 
 import lombok.extern.log4j.Log4j;
 import lombok.extern.slf4j.Slf4j;
