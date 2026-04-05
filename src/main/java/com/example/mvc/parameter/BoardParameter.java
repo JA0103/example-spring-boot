@@ -1,13 +1,11 @@
-package com.example.mvc.domain;
+package com.example.mvc.parameter;
 
-import java.util.Date;
 
 import lombok.Data;
 
 @Data
-public class Board {
+public class BoardParameter {
 	private int boardSeq;
 	private String title;
 	private String contents;
-	private Date regDate;
 }

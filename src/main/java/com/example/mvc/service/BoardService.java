@@ -7,7 +7,10 @@ import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import com.example.mvc.domain.Board;
+import com.example.mvc.parameter.BoardParameter;
 import com.example.mvc.repository.BoardRepository;
+
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * 게시판 서비스
@@ -16,6 +19,7 @@ import com.example.mvc.repository.BoardRepository;
  * 
  */
 @Service
+@Slf4j
 public class BoardService {
 	
 	@Autowired
@@ -42,8 +46,9 @@ public class BoardService {
 	 * 등록/수정
 	 * @param board
 	 */
-	public void save(Board param) {
+	public void save(BoardParameter param) {
 		Board board = repository.get(param.getBoardSeq());
+		log.info("board : {}", param);
 		if(board == null) {
 			repository.save(param);
 		} else {

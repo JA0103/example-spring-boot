@@ -10,7 +10,7 @@
 			B.CONTENTS,
 			B.REG_DATE
 		FROM BOARD B
-		ORDER BY B.REG_DATE DESC
+		ORDER BY B.BOARD_SEQ DESC
 	</select>
 	
 	<select id="get" parameterType="int" resultType="com.example.mvc.domain.Board">
@@ -24,22 +24,24 @@
 		ORDER BY B.REG_DATE DESC
 	</select>
 
-	<insert id="save" parameterType="com.example.mvc.domain.Board" useGeneratedKeys="true" keyProperty="boardSeq">
+	<insert id="save" parameterType="com.example.mvc.parameter.BoardParameter" useGeneratedKeys="true" keyProperty="boardSeq">
 		INSERT INTO BOARD
 		(
+			BOARD_SEQ,
 			TITLE,
 			CONTENTS,
 			REG_DATE
 		)
 		VALUES
 		(
+			#{boardSeq},
 			#{title},
 			#{contents},
 			NOW()
 		)
 	</insert>
 
-	<update id="update" parameterType="com.example.mvc.domain.Board">
+	<update id="update" parameterType="com.example.mvc.parameter.BoardParameter">
 		UPDATE BOARD
 		SET
 			TITLE = #{title},
