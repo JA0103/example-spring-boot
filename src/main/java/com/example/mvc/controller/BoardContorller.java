@@ -2,6 +2,8 @@ package com.example.mvc.controller;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -28,34 +30,30 @@ import lombok.extern.slf4j.Slf4j;
 /**
  * 게시판 컨트롤러
  */
-/**
- * 
- */
 @Slf4j
 @RestController
 @RequestMapping("/board")
 @Tag(name = "게시판 API", description = "게시판 관련 기능")
 public class BoardContorller {
 
+	Logger logger = LoggerFactory.getLogger(getClass());
+	
 	@Autowired
 	private BoardService boardService;
 
 	/**
 	 * 게시물 목록 조회
-	 * 
-	 * @return
 	 */
 	@GetMapping
 	@Operation(summary = "게시물 목록 조회", description = "게시물 목록 정보를 조회할 수 있습니다.")
 	public BaseResponse<List<Board>> getList() {
+		logger.info("getList");
 		return new BaseResponse<List<Board>>(boardService.getList());
 	}
 
 	/**
 	 * 게시물 상세 조회
-	 * 
 	 * @param boardSeq
-	 * @return
 	 */
 	@GetMapping("/{boardSeq}")
 	@Operation(summary = "게시물 상세 조회", description = "게시물 번호에 해당하는 상세 정보를 조회할 수 있습니다.")
@@ -67,7 +65,6 @@ public class BoardContorller {
 
 	/**
 	 * 게시물 등록/수정
-	 * 
 	 * @param board
 	 */
 	@PutMapping("/save")
@@ -93,7 +90,6 @@ public class BoardContorller {
 
 	/**
 	 * 게시물 삭제
-	 * 
 	 * @param boardSeq
 	 */
 	@DeleteMapping("/{boardSeq}")
